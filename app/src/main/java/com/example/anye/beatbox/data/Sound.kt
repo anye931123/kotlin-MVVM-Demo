@@ -8,8 +8,8 @@ data class  Sound( val mAssetPath:String){
     var mSoundId:Int? = null
 
     init {
-        var components=mAssetPath.split("/")
-        var filename=components[components.size-1]
+        val components=mAssetPath.split("/")
+        val filename=components[components.size-1]
         mName=filename.replace(".wav","")
     }
 
