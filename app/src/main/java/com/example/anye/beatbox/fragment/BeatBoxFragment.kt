@@ -33,6 +33,7 @@ companion object {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        retainInstance=true
         mBeatBox=BeatBox(activity)
     }
 
@@ -46,5 +47,10 @@ companion object {
         binding.recycleView.layoutManager= GridLayoutManager(activity,3)
         binding.recycleView.adapter=SoundAdapter(activity,mBeatBox)
         return binding.root
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mBeatBox.release()
     }
 }

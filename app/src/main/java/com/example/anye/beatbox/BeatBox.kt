@@ -15,7 +15,7 @@ class BeatBox(context: Context,
               private val mAssets: AssetManager = context.assets) {
 
     val mSounds= mutableListOf<Sound>()
-    val mSoundPool=SoundPool(MAX_SOUNDS,AudioManager.STREAM_MUSIC,0)
+    private val mSoundPool=SoundPool(MAX_SOUNDS,AudioManager.STREAM_MUSIC,0)
     init {
         loadSounds()
 
@@ -57,5 +57,7 @@ class BeatBox(context: Context,
         val soundId= sound.mSoundId?: return
         mSoundPool.play(soundId,1.0f,1.0f,1,0,1.0f)
     }
+
+    fun release()=mSoundPool.release()
 }
 

@@ -8,8 +8,7 @@ import org.junit.Before
 import org.junit.Assert.*
 import org.junit.Test
 import org.mockito.ArgumentMatchers
-import org.mockito.Mockito.isNotNull
-import org.mockito.Mockito.mock
+import org.mockito.Mockito.*
 
 class SoundViewModelTest {
 
@@ -27,5 +26,11 @@ class SoundViewModelTest {
     @Test
     fun exposesSoundNameAsTitle(){
         assertThat(mSubject!!.getTitle(),Is.`is`(mSound.mName))
+    }
+
+    @Test
+fun callsBeatBoxPlayOnButtonClicked(){
+        mSubject!!.onButtonClicked()
+        verify(mBeatBox)!!.play(mSound)
     }
 }
